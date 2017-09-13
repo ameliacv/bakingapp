@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:weightSum="1">
 
-    <fragment
+    <FrameLayout
         android:name="com.amel.bakingapp.fragments.RecipeStepFragment"
         android:id="@+id/container_step"
         android:layout_width="250dp"
@@ -14,7 +14,7 @@
         android:scaleType="centerInside" />
 
 
-    <fragment
+    <FrameLayout
         android:id="@+id/container_step_detail"
         android:name="com.amel.bakingapp.fragments.RecipeStepDetailFragment"
         android:layout_width="match_parent"

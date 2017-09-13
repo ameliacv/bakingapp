@@ -1,23 +1,34 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.amel.bakingapp.fragments.RecipeStepDetailFragment">
 
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/recipeVideo"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalHalf"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontalHalf"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_medium"
-        android:layout_marginRight="@dimen/space_medium"
-        android:layout_marginTop="@dimen/space_medium" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="256dp" />
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/space_medium">
+        android:layout_margin="@dimen/space_medium"
+        app:layout_constraintTop_toTopOf="@id/horizontalHalf"
+        app:layout_constraintLeft_toLeftOf="parent">
 
         <TextView
             android:id="@+id/instructionRecipe"
@@ -29,4 +40,4 @@
 
     </android.support.v7.widget.CardView>
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

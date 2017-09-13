@@ -1,16 +1,12 @@
 package com.amel.bakingapp;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 
 import com.amel.bakingapp.adapter.RecipeListAdapter;
 import com.amel.bakingapp.data.Recipe;
-import com.amel.bakingapp.fragments.RecipeStepFragment;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements RecipeListAdapter.RecipeListListener {
@@ -61,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements RecipeListAdapter
     @Override
     public void onRecipeClick(Recipe recipe) {
         Intent intent = new Intent(this, RecipeStepActivity.class);
-        intent.putExtra(Util.RECIPE, recipe);
+        intent.putExtra(ConstUtil.RECIPE, recipe);
         startActivity(intent);
     }
 }

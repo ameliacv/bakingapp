@@ -3,7 +3,6 @@ package com.amel.bakingapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.amel.bakingapp.adapter.RecipeStepListAdapter;
 import com.amel.bakingapp.data.Recipe;
@@ -14,7 +13,6 @@ import com.amel.bakingapp.fragments.RecipeStepFragment;
 import java.util.List;
 
 import butterknife.BindBool;
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RecipeStepActivity extends AppCompatActivity implements RecipeStepListAdapter.RecipeStepListener{
@@ -33,14 +31,14 @@ public class RecipeStepActivity extends AppCompatActivity implements RecipeStepL
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        recipe = (Recipe) intent.getSerializableExtra(Util.RECIPE);
+        recipe = (Recipe) intent.getSerializableExtra(ConstUtil.RECIPE);
         steps = recipe.getStepses();
 
         if (savedInstanceState == null) {
             RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
 
             Bundle args = new Bundle();
-            args.putSerializable(Util.RECIPE, recipe);
+            args.putSerializable(ConstUtil.RECIPE, recipe);
             recipeStepFragment.setArguments(args);
 
             getSupportFragmentManager().beginTransaction()
@@ -52,7 +50,7 @@ public class RecipeStepActivity extends AppCompatActivity implements RecipeStepL
                 RecipeStepFragment recipeStepFragment1 = new RecipeStepFragment();
 
                 Bundle StepArgs = new Bundle();
-                StepArgs.putSerializable(Util.RECIPE, recipe);
+                StepArgs.putSerializable(ConstUtil.RECIPE, recipe);
                 recipeStepFragment1.setArguments(StepArgs);
 
                 getSupportFragmentManager().beginTransaction()
@@ -65,7 +63,7 @@ public class RecipeStepActivity extends AppCompatActivity implements RecipeStepL
                 RecipeStepDetailFragment detailStepFragment = new RecipeStepDetailFragment();
 
                 Bundle stepArgs = new Bundle();
-                stepArgs.putSerializable(Util.RECIPE, getStep);
+                stepArgs.putSerializable(ConstUtil.STEP, getStep);
                 detailStepFragment.setArguments(stepArgs);
 
                 getSupportFragmentManager().beginTransaction()
@@ -78,6 +76,8 @@ public class RecipeStepActivity extends AppCompatActivity implements RecipeStepL
 
     @Override
     public void onRecipeStepClick(Steps steps) {
-
+        Intent intent = new Intent(this, RecipeStepDetailActivity.class);
+        intent.putExtra(ConstUtil.STEP, steps);
+        startActivity(intent);
     }
 }

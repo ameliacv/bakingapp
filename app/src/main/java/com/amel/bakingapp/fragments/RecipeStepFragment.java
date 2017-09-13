@@ -1,7 +1,6 @@
 package com.amel.bakingapp.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,8 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.amel.bakingapp.R;
-import com.amel.bakingapp.Util;
-import com.amel.bakingapp.adapter.RecipeListAdapter;
+import com.amel.bakingapp.ConstUtil;
 import com.amel.bakingapp.adapter.RecipeStepListAdapter;
 import com.amel.bakingapp.data.Ingredients;
 import com.amel.bakingapp.data.Recipe;
@@ -61,7 +59,7 @@ public class RecipeStepFragment extends Fragment {
 
         } else {
             if (getArguments() != null) {
-                mRecipe = (Recipe) getArguments().getSerializable(Util.RECIPE);
+                mRecipe = (Recipe) getArguments().getSerializable(ConstUtil.RECIPE);
             }
         }
 
@@ -71,10 +69,9 @@ public class RecipeStepFragment extends Fragment {
             stepsList.addAll(step);
             mAdapter.notifyDataSetChanged();
             if (ingredient != null) {
-
-                    for (Ingredients ingredients : ingredient) {
-                        mIngredientsDetail.setText(ingredients.getIngredient());
-                    }
+                for (Ingredients ingredients : ingredient) {
+                    mIngredientsDetail.append(ingredients.getIngredient() + " \n");
+                }
 
             }
         }

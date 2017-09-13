@@ -6,23 +6,27 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by CrossTechno on 8/25/2017.
  */
 
-public class Recipe {
+public class Recipe implements Serializable{
     @SerializedName("id")
     @Expose
     private int id;
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("image")
+    @Expose
+    private String image;
     @SerializedName("servings")
     @Expose
     private String servings;
-    @SerializedName("ingridients")
+    @SerializedName("ingredients")
     @Expose
     private List<Ingredients> ingredientses;
     @SerializedName("steps")
@@ -67,5 +71,13 @@ public class Recipe {
 
     public void setServings(String servings) {
         this.servings = servings;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

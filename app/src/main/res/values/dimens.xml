@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_list">75dp</dimen>
+    <dimen name="space_medium">10dp</dimen>
+    <dimen name="space_small">5dp</dimen>
+    <dimen name="radius_low">2dp</dimen>
+    <dimen name="small_text">15dp</dimen>
+</resources>

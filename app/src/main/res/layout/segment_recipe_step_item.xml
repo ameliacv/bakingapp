@@ -21,32 +21,15 @@
             android:layout_margin="@dimen/space_medium"
             android:orientation="horizontal">
 
-            <ImageView
-                android:adjustViewBounds="true"
-                android:id="@+id/imageRecipe"
-                android:layout_width="@dimen/image_list"
-                android:layout_height="@dimen/image_list" />
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/textStep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/space_medium"
-                android:orientation="vertical">
+                android:padding="@dimen/space_small"
+                tools:text="@string/bottom_sheet_behavior" />
 
-                <TextView
-                    android:id="@+id/titleRecipe"
-                    tools:text="Recipe 1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_medium" />
-
-                <TextView
-                    android:id="@+id/servingRecipe"
-                    tools:text="Serving 1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
         </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

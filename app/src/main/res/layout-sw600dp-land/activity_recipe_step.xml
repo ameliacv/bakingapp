@@ -19,7 +19,7 @@
         android:name="com.amel.bakingapp.fragments.RecipeStepDetailFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
+        android:layout_margin="10dp"
         android:padding="25dp"
         android:scaleType="centerInside" />
 

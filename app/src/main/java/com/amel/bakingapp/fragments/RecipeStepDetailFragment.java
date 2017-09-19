@@ -9,6 +9,7 @@ import android.support.v4.media.session.MediaSessionCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amel.bakingapp.ConstUtil;
@@ -31,6 +32,7 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,6 +49,8 @@ public class RecipeStepDetailFragment extends Fragment {
     SimpleExoPlayerView mRecipeVideo;
     @BindView(R.id.instructionRecipe)
     TextView mIngredientsDetail;
+    @BindView(R.id.imageThumbnail)
+    ImageView mImageRecipe;
 
     public RecipeStepDetailFragment() {
         // Required empty public constructor
@@ -76,9 +80,18 @@ public class RecipeStepDetailFragment extends Fragment {
         } else {
             if (getArguments() != null) {
                 mStep = (Steps) getArguments().getSerializable(ConstUtil.STEP);
-                if(mStep != null){
+                if (mStep != null) {
                     mIngredientsDetail.setText(mStep.getDescription());
-                    if(mStep.getVideoUrl() != null){
+                    if (mStep.getThumbnailURL() != null && !mStep.getThumbnailURL().equals("")) {
+                        mImageRecipe.setVisibility(View.VISIBLE);
+                        Picasso.with(getContext())
+                                .load(mStep.getThumbnailURL())
+                                .into(mImageRecipe);
+                    }else{
+                        mImageRecipe.setVisibility(View.GONE);
+                    }
+
+                    if (mStep.getVideoUrl() != null) {
                         initExoPlayer();
                     }
 

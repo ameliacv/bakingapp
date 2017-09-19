@@ -22,7 +22,6 @@ public class RecipeStepDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         mSteps = (Steps) intent.getSerializableExtra(ConstUtil.STEP);
-        if (savedInstanceState == null) {
             RecipeStepDetailFragment recipeStepDetailFragment = new RecipeStepDetailFragment();
 
             Bundle args = new Bundle();
@@ -32,6 +31,5 @@ public class RecipeStepDetailActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container_step_detail, recipeStepDetailFragment)
                     .commit();
-        }
     }
 }

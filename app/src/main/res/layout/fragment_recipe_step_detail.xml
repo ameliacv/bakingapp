@@ -14,6 +14,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageThumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <android.support.constraint.Guideline
         android:id="@+id/horizontalHalf"
         android:layout_width="wrap_content"
@@ -23,12 +34,13 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="256dp" />
 
+
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_medium"
-        app:layout_constraintTop_toTopOf="@id/horizontalHalf"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horizontalHalf">
 
         <TextView
             android:id="@+id/instructionRecipe"

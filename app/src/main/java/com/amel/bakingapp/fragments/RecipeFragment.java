@@ -4,7 +4,9 @@ package com.amel.bakingapp.fragments;
  * Created by CrossTechno on 9/9/2017.
  */
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -18,6 +20,9 @@ import android.view.ViewGroup;
 
 import com.amel.bakingapp.R;
 import com.amel.bakingapp.adapter.RecipeListAdapter;
+import com.amel.bakingapp.data.Ingredients;
+import com.amel.bakingapp.data.IngredientsColumns;
+import com.amel.bakingapp.data.IngredientsProvider;
 import com.amel.bakingapp.data.Recipe;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -93,10 +98,19 @@ public class RecipeFragment extends Fragment {
                         mSwipeList.setRefreshing(false);
                         Log.d(TAG, response);
                         List<Recipe> recipes = Arrays.asList(gson.fromJson(response, Recipe[].class));
+                        ContentValues cv = new ContentValues();
                         for (Recipe recipe : recipes) {
                             recipeList.add(recipe);
                             mAdapter.notifyDataSetChanged();
+
+                            for(Ingredients ingredients : recipe.getIngredientses()){
+                                cv.put(IngredientsColumns.INGREDIENT, ingredients.getIngredient());
+                                cv.put(IngredientsColumns.MEASURE, ingredients.getMeasure());
+                                cv.put(IngredientsColumns.QUANTITY, ingredients.getQuantity());
+                            }
+
                         }
+                        Uri newUri = getContext().getContentResolver().insert(IngredientsProvider.Ingredients.CONTENT_URI, cv);
 
                     }
                 }, new Response.ErrorListener() {
@@ -107,6 +121,7 @@ public class RecipeFragment extends Fragment {
         });
         queue.add(stringRequest);
     }
+
 
     private void init() {
         recipeList = new ArrayList<>();
